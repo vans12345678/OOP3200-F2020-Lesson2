@@ -4,7 +4,7 @@
  *		- Examined a simple class with 'instance' data-members, a constructor, accessors, mutators.
  *
  *	@author		Andre Agrippa
- *	@studentID  <YOUR STUDENT ID>
+ *	@studentID  100756090
 */
 
 #include <iostream> 		// cin, cout
@@ -13,7 +13,7 @@
 #include <cmath>			// sqrt()
 #include <limits>			// INT_MAX
 #include <stdexcept>		// out_of_range
-//#include "MyConsoleInput.h" // ConsoleInput::ReadInteger()
+#include "MyConsoleInput.h" // ConsoleInput::ReadInteger()
 
 using namespace std;
 
@@ -50,6 +50,7 @@ public:
 	*	- typically sets a member variable to a parameter
 	*/
 	void SetPoint(int x, int y) { SetX(x); SetY(y); }
+	double GetDistanceTo(CartesianPoint pointTo) const;
 
 	// set x
 	void SetX(int x) { myX = x; }
@@ -70,11 +71,12 @@ int main()
 {
 	// Declarations
 	// a point called 'origin', initialized to 0, 0
-	CartesianPoint origin(0, 0);
+	CartesianPoint origin = CartesianPoint(0, 0);
+	CartesianPoint destination;
 	// a point called 'destination'
 	int inputX; // temporary input variable for x
 	int inputY; // temporary input variable for y
-	// to store the distance between two points
+	double distance;// to store the distance between two points
 
 	try
 	{
@@ -85,22 +87,27 @@ int main()
 		// prompt for, read, and store x coordinate:
 		cout << "X: ";
 		inputX = ConsoleInput::ReadInteger();
+		destination.SetX(inputX);
 
 
 
 		// prompt for, read, and store y coordinate:
 		cout << "Y: ";
 		inputY = ConsoleInput::ReadInteger();
+		destination.SetY(inputY);
 
 
 
 		// Processing
 		// determine the distance between the two points
+		distance = origin.GetDistanceTo(destination);
 
 
 		// Output 
 		// Show the points and the distance
-		cout << fixed << setprecision(3); // formatting
+		// formatting
+		cout << fixed << setprecision(3) << "/nThe distance between" << origin.ToString()
+			 << " and " << destination.ToString() << " is " << distance << "."<< endl; 
 
 
 	}
@@ -122,11 +129,16 @@ int main()
 *	@param	pointTo: CartesianPoint
 *	@return	the distance as a double
 */
-double GetDistanceTo(CartesianPoint poinTo) const\
+double CartesianPoint::GetDistanceTo(CartesianPoint poinTo) const
 {
 	// difference between x values
+	int xDiff = poinTo.myX - myX;
 	// difference between y values
+	int yDiff = poinTo.myY - myY;
+	
 	// return the formula (based on Pythagorean theorem)
+	return sqrt((xDiff * xDiff) + (yDiff * yDiff));
+	
 
 }
 
