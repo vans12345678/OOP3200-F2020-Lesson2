@@ -3,13 +3,11 @@
 #include <cmath>
 #include <limits> // numeric_limits
 #include <cfloat>  // for limits of a double DBL_MIN and DBL_MAX
-
+#include "MyconsoleInput.h"
 using namespace std;
 
-namespace ConsoleInput
-{
 	// ReadDouble function definition
-	double ReadDouble(const double MIN, const double MAX)
+	double ConsoleInput::ReadDouble(const double MIN, const double MAX)
 	{
 
 		double validNumber = 0.0; // holds the user input
@@ -41,7 +39,7 @@ namespace ConsoleInput
 	}
 
 	// ReadInteger function definition
-	int ReadInteger(const int MIN, const int MAX)
+	int ConsoleInput::ReadInteger(const int MIN, const int MAX)
 	{
 
 		double validNumber = 0.0; // holds the user input
@@ -57,5 +55,3 @@ namespace ConsoleInput
 		}
 		return (int)validNumber; // returns a valid value to the calling function.
 	}
-
-}

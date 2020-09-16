@@ -13,7 +13,7 @@
 #include <cmath>			// sqrt()
 #include <limits>			// INT_MAX
 #include <stdexcept>		// out_of_range
-#include "MyConsoleInput.h" // ConsoleInput::ReadInteger()
+//#include "MyConsoleInput.h" // ConsoleInput::ReadInteger()
 
 using namespace std;
 
@@ -38,9 +38,9 @@ public:
 	*/
 
 	// get x
-	int GetX(int x) { return x; }
+	int GetX() const{ return myX; }
 	// get y
-	int GetY(int y) { return y; }
+	int GetY() const{ return myY; }
 	// get the distance between this point and a second point
 	// convert the obj to a string
 	string ToString() const;
@@ -122,7 +122,7 @@ int main()
 *	@param	pointTo: CartesianPoint
 *	@return	the distance as a double
 */
-
+double GetDistanceTo(CartesianPoint poinTo) const\
 {
 	// difference between x values
 	// difference between y values
